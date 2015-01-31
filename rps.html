@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	
+	<title>Rock Paper Scissors</title>
+	
+	<style>
+		
+		img.bg {
+			/* Set rules to fill background */
+			min-height: 100%;
+			min-width: 1024px;
+			
+			/* Set up proportionate scaling */
+			width: 100%;
+			height: auto;
+			
+			/* Set up positioning */
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+
+		h1 {
+			color: #3038bf;
+			font-weight: bold;
+			font-size: 50px;
+			text-align: center;
+			font-family: sans-serif;
+			text-shadow: white 0.1em 0.1em 0.2em
+		}
+
+		h2 {
+			color: black;
+			font-size: 20px;
+			text-align: center;
+			font-family: sans-serif;
+			font-weight: 10em;
+		}
+
+		h3 {
+			color: #7a378b;
+			font-weight: bold;
+			font-size: 40px;
+			text-align: center;
+			font-family: sans-serif;
+			text-shadow: white 0.1em 0.1em 0.2em
+		}
+
+		h4 {
+			color: #afeeee;
+		}
+		
+		@media screen and (max-width: 1024px){
+			img.bg {
+				left: 50%;
+				margin-left: -512px; }
+		}
+
+		#div1 {
+			background: #e5fff3;
+		    width:475px;
+		    height:600px;
+		    float:left;
+		}
+		#div2 {
+			background: #e5fff3;
+		    width:475px;
+		    height:600px;
+		    float:left;
+		}
+
+		.container {
+			width: 350px;
+			height: 350px;
+			margin: 56px;
+		    line-height: 115px;
+		    text-align: center;
+		}
+
+		.container img {
+			max-width:100%;
+    		max-height:100%;
+    		vertical-align: middle;
+		}
+
+		#new-button {
+			border: 2px solid #78c272;
+			color: #78c272;
+			background: #f6f6ec;
+		}
+		#new-button:hover {
+			background:#78c272;
+			color: white;
+		}
+		.new-action-button {
+			text-align: center;
+			padding: 10px 0px;
+			border-radius: 30px;
+			font-size: 13px;
+			font-weight: 700;
+			width: 150px;
+			margin: 0px auto;
+			cursor: pointer;
+			transition: linear 0.2s;
+		}
+
+		.button {
+		   border-top: 1px solid #96d1f8;
+		   background: #65a9d7;
+		   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+		   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+		   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+		   padding: 11px 22px;
+		   -webkit-border-radius: 8px;
+		   -moz-border-radius: 8px;
+		   border-radius: 30px;
+		   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   box-shadow: rgba(0,0,0,1) 0 1px 0;
+		   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+		   color: white;
+		   font-size: 15px;
+		   font-family: Georgia, serif;
+		   text-decoration: none;
+		   vertical-align: middle;
+		   }
+		.button:hover {
+		   border-top-color: #28597a;
+		   background: #28597a;
+		   color: #ccc;
+		   }
+		.button:active {
+		   border-top-color: #1b435e;
+		   background: #1b435e;
+		   }
+		
+		#page-wrap { position: relative; width: 950px; height: 1000px; margin: 50px auto; padding: 20px; background: #afeeee; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
+		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
+	</style>
+
+	<script type="text/javascript">
+		var fortune_text = new Array();
+
+		function changeImg() {
+			document.getElementById("imgClosed").src = "images/open.gif";
+		}
+
+		function changeImgBack() {
+			document.getElementById("imgClosed").src = "images/close.gif";
+		}
+
+		function fortune() {
+			fortune_text[0] = "The time is right to make new friends.";
+			fortune_text[1] = "You learn from your mistakes. You will learn a lot today.";
+			fortune_text[2] = "If you have something good in your life, don't let it go.";
+			fortune_text[3] = "Whatever your goal is in life, embrace it, visualize it, for it will be yours."
+			fortune_text[4] = "You will be happy today.";
+			fortune_text[5] = "You cannot love life until you live the life you love.";
+			fortune_text[6] = "Be on the lookout for coming events. They cast their shadows beforehand.";
+			fortune_text[7] = "Land is always on the mind of a flying bird.";
+			fortune_text[8] = "Meeting adversity well is the source of your strength.";
+			fortune_text[9] = "A dream you have will come true.";
+			fortune_text[10] = "Our deeds determine us, as much as we determine our deeds.";
+			fortune_text[11] = "Never give up. You're not a failure if you don't give up.";
+			fortune_text[12] = "You will become great if you believe in yourself.";
+			fortune_text[13] = "There is no greater pleasure than seeing your loved ones prosper.";
+			fortune_text[14] = "You will make a new friend very soon.";
+			fortune_text[15] = "You already know the answer to the questions lingering inside your head.";
+			fortune_text[16] = "It is now, and in this world, that we must live.";
+			fortune_text[17] = "You must try, or hate yourself for not trying.";
+			fortune_text[18] = "You can make your own happiness.";
+			fortune_text[19] = "The greatest risk is not taking one.";
+			fortune_text[20] = "Love can last a lifetime, if you want it to.";
+			fortune_text[21] = "Adversity is the parent of virtue.";
+			fortune_text[22] = "A stranger will enter your life with blessings to share.";
+			fortune_text[23] = "Now is the time to try something new.";
+			fortune_text[24] = "Good fortune awaits you very soon.";
+			fortune_text[25] = "If you feel you are right, stand firmly by your convictions."
+			fortune_text[26] = "Keep your eye out for someone special.";
+			fortune_text[27] = "You are very talented in many ways.";
+			fortune_text[28] = "A stranger is a friend you have not spoken to yet.";
+			fortune_text[29] = "A new voyage will fill your life with untold memories.";
+			fortune_text[30] = "You will travel to many exotic places in your lifetime.";
+			fortune_text[31] = "Your ability for accomplishment will follow with success.";
+			fortune_text[32] = "You are the best. Never believe otherwise.";
+			fortune_text[33] = "Jealousy doesn't open doors, it closes them.";
+			fortune_text[34] = "When fear hurts you, conquer it and defeat it.";
+			fortune_text[35] = "Don't be afraid to be alone.";
+			fortune_text[36] = "You will have a position of high honor and responsibility.";
+			fortune_text[37] = "You will conquer obstacles to achieve success.";
+			fortune_text[38] = "Fortune favors the brave.";
+			fortune_text[39] = "A journey of a thousand miles begins with a single step.";
+			fortune_text[40] = "Never give up. Always find a reason to keep trying.";
+			fortune_text[41] = "Stop wishing. Start doing.";
+			fortune_text[42] = "If you have something worth fighting for, then fight for it.";
+			fortune_text[43] = "Accept your past without regrets. Handle your present with confidence. Face your future without fear.";
+			fortune_text[44] = "Stay true to those who would do the same for you.";
+			fortune_text[45] = "Ask yourself if what you are doing today is getting you closer to where you want to be tomorrow.";
+			fortune_text[46] = "Help! I'm stuck in a Chinese cookie factory!";
+			fortune_text[47] = "Happiness is an activity.";
+			fortune_text[48] = "Stay true to your heart.";
+			fortune_text[49] = "Don't be greedy.";
+			fortune_text[50] = "Your fortune is as sweet as a cookie.";
+			fortune_text[51] = "Integrity is the essence of everything successful.";
+			fortune_text[52] = "If you're happy, you're successful.";
+			fortune_text[53] = "You will always be surrounded by true friends.";
+			fortune_text[54] = "Believing that you are beautiful will make you appear beautiful to others around you.";
+			fortune_text[55] = "Happiness comes from a good life.";
+			fortune_text[56] = "Before trying to please others think of what makes you happy.";
+			fortune_text[57] = "Your golden opportunity is coming shortly.";
+			fortune_text[58] = "You will make many changes before settling down happily.";
+			fortune_text[59] = "Don't pursue happiness. Create it.";
+
+			var i = Math.floor(60 * Math.random());
+			alert(fortune_text[i]);
+		}
+
+		function getFortune() {
+			fortune();
+		}
+
+	</script>
+</head>
+
+<body>
+
+	<img src="images/wood.jpg" class="bg">
+	
+	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
+		<h2> Click on either rock paper scissors then "Determine" to see who wins! </h2>
+	<!-- <img src="images/close.gif" id="imgClosed" onclick="getFortune()"/> -->
+		<div id="div1">
+			<h3> Computer </h3>
+			<div class="container">
+				<img src="images/computer.jpg" id="comp"/>
+			</div>
+			<div style="text-align: center;">
+				<a href="#" class="button">Determine</a>
+			</div>
+
+		</div>
+		<div id="div2">
+			<h3> You </h3>
+			<div class="container">
+				<img src="images/person.jpg" id="comp"/>
+			</div>
+			<div style="text-align: center;">
+				<a href="#" class="button">Rock</a>
+				<a href="#" class="button">Paper</a>
+				<a href="#" class="button">Scissors</a>
+			</div>
+		</div>
+		<h4> HI MY NAME IS MICHELLE</h4>
+		<div style="text-align: center;">
+			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Start Again</div>
+		</div>
+		
+	</div>
+	<!-- <div id="page-wrap">
+	
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p> 
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p> 
+		<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p> 
+	
+	</div> -->
+	
+</body>
+
+</html>
