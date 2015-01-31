@@ -169,10 +169,13 @@
 		function changeImgHuman() {
 			if (humanRockClicked == true) {
 				document.getElementById("humanImg").src = "images/rock.jpg";
+				humanRockClicked = false;
 			} else if (humanPaperClicked == true) {
 				document.getElementById("humanImg").src = "images/paper.jpg";
+				humanPaperClicked = false;
 			} else if (humanScissorsClicked == true) {
 				document.getElementById("humanImg").src = "images/scissors.jpg";
+				humanScissorsClicked = false;
 			}
 		}
 		function changeImgComp() {
@@ -196,19 +199,9 @@
 	<img src="images/wood.jpg" class="bg">
 	
 	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
-		<h2> Click on either rock paper scissors then "Determine" to see who wins! </h2>
+		<h2> Click on either rock, paper, or scissors then "Determine" to see who wins! Click "Start Again" to start a new game.</h2>
 	<!-- <img src="images/close.gif" id="imgClosed" onclick="getFortune()"/> -->
 		<div id="div1">
-			<h3> Computer </h3>
-			<div class="container">
-				<img src="images/computer.jpg" id="compImg"/>
-			</div>
-			<div style="text-align: center;">
-				<a href="#" class="button" onclick="determine()">Determine</a>
-			</div>
-
-		</div>
-		<div id="div2">
 			<h3> You </h3>
 			<div class="container">
 				<img src="images/person.jpg" id="humanImg"/>
@@ -218,6 +211,16 @@
 				<a href="#" class="button" id="humanPaper" onclick="humanChoicePaper()">Paper</a>
 				<a href="#" class="button" id="humanScissors" onclick="humanChoiceScissors()">Scissors</a>
 			</div>
+		</div>
+		<div id="div2">
+			<h3> Computer </h3>
+			<div class="container">
+				<img src="images/computer.jpg" id="compImg"/>
+			</div>
+			<div style="text-align: center;">
+				<a href="#" class="button" onclick="determine()">Determine</a>
+			</div>
+
 		</div>
 		<h4> HI MY NAME IS MICHELLE</h4>
 		<div style="text-align: center;">
