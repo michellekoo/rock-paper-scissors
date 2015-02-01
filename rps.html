@@ -226,6 +226,7 @@
 			return (comp[i]);
 		}
 		function humanChoiceRock() {
+			resetVar();
 			humanRockClicked = true;
 			humanChoice = "rock";
 			changeImgComp();
@@ -235,6 +236,7 @@
 			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 		function humanChoicePaper() {
+			resetVar();
 			humanPaperClicked = true;
 			humanChoice = "paper";
 			changeImgComp();
@@ -244,6 +246,7 @@
 			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 		function humanChoiceScissors() {
+			resetVar();
 			humanScissorsClicked = true;
 			humanChoice = "scissors";
 			changeImgComp();
@@ -312,6 +315,14 @@
 			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 
+		function resetVar() {
+			compChoice = "";
+			humanChoice = "";
+			document.getElementById("winnerTxtHuman").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").innerHTML="Winner!";
+			document.getElementById("winnerTxtHuman").innerHTML="Winner!";
+		}
 		function changeImgBack() {
 			compChoice = "";
 			humanChoice = "";
@@ -346,7 +357,7 @@
 	<img src="images/wood.jpg" class="bg">
 	
 	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
-		<h2> Click on either rock, paper, or scissors to see who wins! Click "Next Round" after each turn to start a new round, or "Start Over" to start a new game.</h2>
+		<h2> Click on either rock, paper, or scissors to see who wins! To keep playing, keep clicking rock, paper, or scissors. Click "Start Over" to start a new game.</h2>
 		<div id="scorediv" style="text-align:center;"> 
 			<div id="innerscore"> 
 				<h5> You </h5>
@@ -386,9 +397,9 @@
 			</div> -->
 
 		</div>
-		<h4> HI MY NAME IS MICHELLE</h4>
+		<!-- <h4> HI MY NAME IS MICHELLE</h4>
 		<div style="text-align: center;">
-			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Next Round</div>
+			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Next Round</div> -->
 			<h4> HI MY NAME IS MICHELLE</h4>
 			<div class="new-action-button" id="new-button" onclick="startOver()">Start Over</div>
 		</div>
