@@ -52,7 +52,24 @@
 		h4 {
 			color: #afeeee;
 		}
+
+		#winnerTxtComp {
+			color: #700ed6;
+			font-weight: bold;
+			font-size: 35px;
+			text-align: center;
+			font-family: sans-serif;
+			text-shadow: white 0.1em 0.1em 0.2em
+		}
 		
+		#winnerTxtHuman {
+			color: #700ed6;
+			font-weight: bold;
+			font-size: 35px;
+			text-align: center;
+			font-family: sans-serif;
+			text-shadow: white 0.1em 0.1em 0.2em
+		}
 		@media screen and (max-width: 1024px){
 			img.bg {
 				left: 50%;
@@ -62,13 +79,13 @@
 		#div1 {
 			background: #e5fff3;
 		    width:475px;
-		    height:600px;
+		    height:700px;
 		    float:left;
 		}
 		#div2 {
 			background: #e5fff3;
 		    width:475px;
-		    height:600px;
+		    height:700px;
 		    float:left;
 		}
 
@@ -149,26 +166,39 @@
 		var humanRockClicked = false;
 		var humanPaperClicked = false;
 		var humanScissorsClicked = false;
+		var humanChoice = "";
+		var compChoice = "";
 
 		function randomComputer() {
 			comp[0] = "images/rock.jpg";
 			comp[1] = "images/paper.jpg";
 			comp[2] = "images/scissors.jpg";
 			var i = Math.floor(3 * Math.random());
+			if (i == 0) {
+				compChoice = "rock";
+			} else if (i == 1) {
+				compChoice = "paper";
+			} else if (i == 2) {
+				compChoice = "scissors";
+			}
 			return (comp[i]);
 		}
 		function humanChoiceRock() {
 			humanRockClicked = true;
+			humanChoice = "rock";
 		}
 		function humanChoicePaper() {
 			humanPaperClicked = true;
+			humanChoice = "paper";
 		}
 		function humanChoiceScissors() {
 			humanScissorsClicked = true;
+			humanChoice = "scissors";
 		}
 		function changeImgHuman() {
 			if (humanRockClicked == true) {
 				document.getElementById("humanImg").src = "images/rock.jpg";
+				//document.getElementById("winnerTxtComp").style.visibility="visible";
 				humanRockClicked = false;
 			} else if (humanPaperClicked == true) {
 				document.getElementById("humanImg").src = "images/paper.jpg";
@@ -181,14 +211,52 @@
 		function changeImgComp() {
 			document.getElementById("compImg").src = randomComputer();
 		}
+		function winner() {
+			if (humanChoice === compChoice) {
+				//tie
+				document.getElementById("winnerTxtComp").style.visibility="visible";
+				document.getElementById("winnerTxtHuman").style.visibility="visible";
+			} else if ((humanChoice === "rock") && (compChoice === "paper")) {
+				//computer wins
+				document.getElementById("winnerTxtComp").style.visibility="visible";
+			} else if ((humanChoice === "paper") && (compChoice === "rock")) {
+				//human wins
+				document.getElementById("winnerTxtHuman").style.visibility="visible";
+			} else if ((humanChoice === "rock") && (compChoice === "scissors")) {
+				//human wins
+				document.getElementById("winnerTxtHuman").style.visibility="visible";
+			} else if ((humanChoice == "scissors") && (compChoice === "rock")) {
+				//computer wins
+				document.getElementById("winnerTxtComp").style.visibility="visible";
+			} else if ((humanChoice === "paper") && (compChoice === "scissors")) {
+				//computer wins
+				document.getElementById("winnerTxtComp").style.visibility="visible";
+			} else if ((humanChoice === "scissors") && (compChoice === "paper")) {
+				//human wins
+				document.getElementById("winnerTxtHuman").style.visibility="visible";
+			}
+		}
+		function hideshow(which){
+			if (!document.getElementById)
+				return
+			if (which.style.visibility=="visible")
+				which.style.display="hidden"
+			else
+				which.style.display="visible"
+		}
 		function determine() {
 			changeImgComp();
 			changeImgHuman();
+			winner();
 		}
 
 		function changeImgBack() {
+			compChoice = "";
+			humanChoice = "";
 			document.getElementById("humanImg").src = "images/person.jpg";
 			document.getElementById("compImg").src = "images/computer.jpg";
+			document.getElementById("winnerTxtHuman").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").style.visibility="hidden";
 		}
 
 	</script>
@@ -203,6 +271,8 @@
 	<!-- <img src="images/close.gif" id="imgClosed" onclick="getFortune()"/> -->
 		<div id="div1">
 			<h3> You </h3>
+			<div id="winnerTxtHuman" style="visibility:hidden;">Winner!</div>
+			<!-- <h5> Winner! </h5> -->
 			<div class="container">
 				<img src="images/person.jpg" id="humanImg"/>
 			</div>
@@ -214,6 +284,8 @@
 		</div>
 		<div id="div2">
 			<h3> Computer </h3>
+			<div id="winnerTxtComp" style="visibility:hidden;">Winner!</div>
+			<!-- <h5> Winner! </h5> -->
 			<div class="container">
 				<img src="images/computer.jpg" id="compImg"/>
 			</div>
