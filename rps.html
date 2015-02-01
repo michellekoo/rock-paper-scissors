@@ -29,7 +29,7 @@
 			font-size: 50px;
 			text-align: center;
 			font-family: sans-serif;
-			text-shadow: white 0.1em 0.1em 0.2em
+			text-shadow: white 0.1em 0.1em 0.2em;
 		}
 
 		h2 {
@@ -46,11 +46,12 @@
 			font-size: 40px;
 			text-align: center;
 			font-family: sans-serif;
-			text-shadow: white 0.1em 0.1em 0.2em
+			text-shadow: white 0.1em 0.1em 0.2em;
 		}
 
 		h4 {
 			color: #afeeee;
+			margin: 0;
 		}
 
 		h5 {
@@ -79,7 +80,8 @@
 			font-size: 35px;
 			text-align: center;
 			font-family: sans-serif;
-			text-shadow: white 0.1em 0.1em 0.2em
+			text-shadow: white 0.1em 0.1em 0.2em;
+			margin-top: 0px;
 		}
 		
 		#winnerTxtHuman {
@@ -88,7 +90,8 @@
 			font-size: 35px;
 			text-align: center;
 			font-family: sans-serif;
-			text-shadow: white 0.1em 0.1em 0.2em
+			text-shadow: white 0.1em 0.1em 0.2em;
+			margin-top:0px;
 		}
 		@media screen and (max-width: 1024px){
 			img.bg {
@@ -112,7 +115,7 @@
 		#scorediv {
 			background: #b6e0a4;
 			width: 200px;
-			height: 120px;
+			height: 100px;
 			margin:0;
 			float:center;
 			box-shadow: 5px 5px 2px #888888;
@@ -120,7 +123,7 @@
 
 		#innerscore {
 			width:100px;
-			height:120px;
+			height:100px;
 			float: left;
 		}
 
@@ -251,6 +254,10 @@
 		function winner() {
 			if (humanChoice === compChoice) {
 				//tie
+				// document.getElementById("winnerTxtComp").style.visibility="visible";
+				// document.getElementById("winnerTxtHuman").style.visibility="visible";
+				document.getElementById("winnerTxtComp").innerHTML="Tie!";
+				document.getElementById("winnerTxtHuman").innerHTML="Tie!";
 				document.getElementById("winnerTxtComp").style.visibility="visible";
 				document.getElementById("winnerTxtHuman").style.visibility="visible";
 			} else if ((humanChoice === "rock") && (compChoice === "paper")) {
@@ -295,6 +302,23 @@
 			document.getElementById("compImg").src = "images/computer.jpg";
 			document.getElementById("winnerTxtHuman").style.visibility="hidden";
 			document.getElementById("winnerTxtComp").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").innerHTML="Winner!";
+			document.getElementById("winnerTxtHuman").innerHTML="Winner!";
+		}
+
+		function startOver() {
+			compChoice = "";
+			humanChoice = "";
+			document.getElementById("humanImg").src = "images/person.jpg";
+			document.getElementById("compImg").src = "images/computer.jpg";
+			document.getElementById("winnerTxtHuman").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").style.visibility="hidden";
+			document.getElementById("winnerTxtComp").innerHTML="Winner!";
+			document.getElementById("winnerTxtHuman").innerHTML="Winner!";
+			scoreComp = 0;
+			scoreHuman = 0;
+			document.getElementById("compScore").innerHTML = scoreComp;
+			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 
 	</script>
@@ -305,7 +329,7 @@
 	<img src="images/wood.jpg" class="bg">
 	
 	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
-		<h2> Click on either rock, paper, or scissors then "Play!" to see who wins! Click "Next Round" to start a new round.</h2>
+		<h2> Click on either rock, paper, or scissors then "Play!" to see who wins! Click "Next Round" to start a new round, or "Start Over" to start a new game.</h2>
 		<div id="scorediv" style="text-align:center;"> 
 			<div id="innerscore"> 
 				<h5> You </h5>
@@ -348,6 +372,8 @@
 		<h4> HI MY NAME IS MICHELLE</h4>
 		<div style="text-align: center;">
 			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Next Round</div>
+			<h4> HI MY NAME IS MICHELLE</h4>
+			<div class="new-action-button" id="new-button" onclick="startOver()">Start Over</div>
 		</div>
 		
 	</div>
