@@ -53,6 +53,26 @@
 			color: #afeeee;
 		}
 
+		h5 {
+			color: black;
+			font-size: 15px;
+			text-align: center;
+			font-family: sans-serif;
+			line-height: 0px;
+			padding: 0;
+			margin-top:13px;
+		}
+
+		h6 {
+			color:black;
+			font-weight: bold;
+			font-size: 35px;
+			text-align: center;
+			font-family: sans-serif;
+			padding: 0;
+			margin-top:5px;
+		}
+
 		#winnerTxtComp {
 			color: #700ed6;
 			font-weight: bold;
@@ -87,6 +107,21 @@
 		    width:475px;
 		    height:700px;
 		    float:left;
+		}
+
+		#scorediv {
+			background: #b6e0a4;
+			width: 200px;
+			height: 120px;
+			margin:0;
+			float:center;
+			box-shadow: 5px 5px 2px #888888;
+		}
+
+		#innerscore {
+			width:100px;
+			height:120px;
+			float: left;
 		}
 
 		.container {
@@ -156,7 +191,7 @@
 		   background: #1b435e;
 		   }
 		
-		#page-wrap { position: relative; width: 950px; height: 1000px; margin: 50px auto; padding: 20px; background: #afeeee; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
+		#page-wrap { position: relative; width: 950px; height: 1100px; margin: 50px auto; padding: 20px; background: #afeeee; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
 		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
 	</style>
 
@@ -168,6 +203,8 @@
 		var humanScissorsClicked = false;
 		var humanChoice = "";
 		var compChoice = "";
+		var scoreHuman = 0;
+		var scoreComp = 0;
 
 		function randomComputer() {
 			comp[0] = "images/rock.jpg";
@@ -219,35 +256,36 @@
 			} else if ((humanChoice === "rock") && (compChoice === "paper")) {
 				//computer wins
 				document.getElementById("winnerTxtComp").style.visibility="visible";
+				scoreComp += 1;
 			} else if ((humanChoice === "paper") && (compChoice === "rock")) {
 				//human wins
 				document.getElementById("winnerTxtHuman").style.visibility="visible";
+				scoreHuman += 1;
 			} else if ((humanChoice === "rock") && (compChoice === "scissors")) {
 				//human wins
 				document.getElementById("winnerTxtHuman").style.visibility="visible";
+				scoreHuman += 1;
 			} else if ((humanChoice == "scissors") && (compChoice === "rock")) {
 				//computer wins
 				document.getElementById("winnerTxtComp").style.visibility="visible";
+				scoreComp += 1;
 			} else if ((humanChoice === "paper") && (compChoice === "scissors")) {
 				//computer wins
 				document.getElementById("winnerTxtComp").style.visibility="visible";
+				scoreComp += 1;
 			} else if ((humanChoice === "scissors") && (compChoice === "paper")) {
 				//human wins
 				document.getElementById("winnerTxtHuman").style.visibility="visible";
+				scoreHuman += 1;
 			}
 		}
-		function hideshow(which){
-			if (!document.getElementById)
-				return
-			if (which.style.visibility=="visible")
-				which.style.display="hidden"
-			else
-				which.style.display="visible"
-		}
+
 		function determine() {
 			changeImgComp();
 			changeImgHuman();
 			winner();
+			document.getElementById("compScore").innerHTML = scoreComp;
+			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 
 		function changeImgBack() {
@@ -267,9 +305,21 @@
 	<img src="images/wood.jpg" class="bg">
 	
 	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
-		<h2> Click on either rock, paper, or scissors then "Play!" to see who wins! Click "Start Again" to start a new game.</h2>
+		<h2> Click on either rock, paper, or scissors then "Play!" to see who wins! Click "Next Round" to start a new round.</h2>
+		<div id="scorediv" style="text-align:center;"> 
+			<div id="innerscore"> 
+				<h5> You </h5>
+				<h6 id="youScore"> 0 </h6>
+			</div>
+			<div id="innerscore"> 
+				<h5> Computer </h5>
+				<h6 id="compScore"> 0 </h6>
+			</div>
+		</div>
+
 	<!-- <img src="images/close.gif" id="imgClosed" onclick="getFortune()"/> -->
 		<div id="div1">
+			<!-- <div id="scoredivYou"> <h5>Your Score</h5> <h6> 15</h6></div> -->
 			<h3> You </h3>
 			<div id="winnerTxtHuman" style="visibility:hidden;">Winner!</div>
 			<!-- <h5> Winner! </h5> -->
@@ -283,6 +333,7 @@
 			</div>
 		</div>
 		<div id="div2">
+			<!-- <div id="scoredivComp"> <h5>Computer Score</h5></div> -->
 			<h3> Computer </h3>
 			<div id="winnerTxtComp" style="visibility:hidden;">Winner!</div>
 			<!-- <h5> Winner! </h5> -->
@@ -296,7 +347,7 @@
 		</div>
 		<h4> HI MY NAME IS MICHELLE</h4>
 		<div style="text-align: center;">
-			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Start Again</div>
+			<div class="new-action-button" id="new-button" onclick="changeImgBack()">Next Round</div>
 		</div>
 		
 	</div>
