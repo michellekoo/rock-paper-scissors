@@ -47,6 +47,8 @@
 			text-align: center;
 			font-family: sans-serif;
 			text-shadow: white 0.1em 0.1em 0.2em;
+			margin-top: 20px;
+			margin-bottom: 5px;
 		}
 
 		h4 {
@@ -81,7 +83,7 @@
 			text-align: center;
 			font-family: sans-serif;
 			text-shadow: white 0.1em 0.1em 0.2em;
-			margin-top: 0px;
+			margin-top: 10px;
 		}
 		
 		#winnerTxtHuman {
@@ -91,7 +93,7 @@
 			text-align: center;
 			font-family: sans-serif;
 			text-shadow: white 0.1em 0.1em 0.2em;
-			margin-top:0px;
+			margin-top:10px;
 		}
 		@media screen and (max-width: 1024px){
 			img.bg {
@@ -102,20 +104,20 @@
 		#div1 {
 			background: #e5fff3;
 		    width:475px;
-		    height:700px;
+		    height:620px;
 		    float:left;
 		}
 		#div2 {
 			background: #e5fff3;
 		    width:475px;
-		    height:700px;
+		    height:620px;
 		    float:left;
 		}
 
 		#scorediv {
 			background: #b6e0a4;
 			width: 200px;
-			height: 100px;
+			height: 80px;
 			margin:0;
 			float:center;
 			box-shadow: 5px 5px 2px #888888;
@@ -123,7 +125,7 @@
 
 		#innerscore {
 			width:100px;
-			height:100px;
+			height:80px;
 			float: left;
 		}
 
@@ -194,7 +196,7 @@
 		   background: #1b435e;
 		   }
 		
-		#page-wrap { position: relative; width: 950px; height: 1100px; margin: 50px auto; padding: 20px; background: #afeeee; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
+		#page-wrap { position: relative; width: 950px; height: 1000px; margin: 50px auto; padding: 20px; background: #afeeee; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
 		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
 	</style>
 
@@ -226,14 +228,29 @@
 		function humanChoiceRock() {
 			humanRockClicked = true;
 			humanChoice = "rock";
+			changeImgComp();
+			changeImgHuman();
+			winner();
+			document.getElementById("compScore").innerHTML = scoreComp;
+			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 		function humanChoicePaper() {
 			humanPaperClicked = true;
 			humanChoice = "paper";
+			changeImgComp();
+			changeImgHuman();
+			winner();
+			document.getElementById("compScore").innerHTML = scoreComp;
+			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 		function humanChoiceScissors() {
 			humanScissorsClicked = true;
 			humanChoice = "scissors";
+			changeImgComp();
+			changeImgHuman();
+			winner();
+			document.getElementById("compScore").innerHTML = scoreComp;
+			document.getElementById("youScore").innerHTML = scoreHuman;
 		}
 		function changeImgHuman() {
 			if (humanRockClicked == true) {
@@ -329,7 +346,7 @@
 	<img src="images/wood.jpg" class="bg">
 	
 	<div id="page-wrap"> <h1>Rock Paper Scissors</h1>
-		<h2> Click on either rock, paper, or scissors then "Play!" to see who wins! Click "Next Round" to start a new round, or "Start Over" to start a new game.</h2>
+		<h2> Click on either rock, paper, or scissors to see who wins! Click "Next Round" after each turn to start a new round, or "Start Over" to start a new game.</h2>
 		<div id="scorediv" style="text-align:center;"> 
 			<div id="innerscore"> 
 				<h5> You </h5>
@@ -364,9 +381,9 @@
 			<div class="container">
 				<img src="images/computer.jpg" id="compImg"/>
 			</div>
-			<div style="text-align: center;">
+			<!-- <div style="text-align: center;">
 				<a href="#" class="button" onclick="determine()">Play!</a>
-			</div>
+			</div> -->
 
 		</div>
 		<h4> HI MY NAME IS MICHELLE</h4>
